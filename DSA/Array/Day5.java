@@ -1,4 +1,4 @@
-//Rotation of an Array
+//Rotate an array of n elements to the right by k steps.
 public class Day5 {
     public static void rotateArray(int arr[],int k){
         int n=arr.length;
@@ -32,7 +32,7 @@ public class Day5 {
         }
 
         System.out.println();
-        
+
         rotateArray(arr,k);
         System.out.println("Array after rotation:");
         for(int i:arr){
