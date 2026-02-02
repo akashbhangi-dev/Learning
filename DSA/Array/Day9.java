@@ -9,7 +9,6 @@ public class Day9 {
         for(int i=0;i<arr.length;i++){
             int complement=target-arr[i];
 
-            git reset HEAD <file>
             if(map.containsKey(complement)){
                 return new int[]{map.get(complement),i};
             }
