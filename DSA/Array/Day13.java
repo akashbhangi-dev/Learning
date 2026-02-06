@@ -26,7 +26,7 @@ public class Day13{
     public static void main (String[]args){
         int[] arr1={7,1,5,3,6,4};
         int [] arr2={12,5,9,8,5,6};
-        
+
         System.out.println("Maximum Profit produced:"+maxProfitOptimised(arr1));
         System.out.println("Maximum Profit produced:"+maxProfitOptimised(arr2));
     }
