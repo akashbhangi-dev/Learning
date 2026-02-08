@@ -1,6 +1,6 @@
 //Rearrange Array Elements by Sign
 public class Day14 {
-    //
+    
     public static void rearrangeOptimsiedWay1(int arr[]){
         int i=0;//tracking even index
         int j=1;//tracking odd index
