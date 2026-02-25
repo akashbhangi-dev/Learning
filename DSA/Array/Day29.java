@@ -1,5 +1,4 @@
-public class Day29
- {
+public class Day29{
 
     public static String longestPalindrome(String s) {
 
