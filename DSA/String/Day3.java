@@ -1,51 +1,50 @@
 package DSA.String;
 
 class Day3 {
-    public String validIPAddress(String queryIP) {
-        if (queryIP.chars().filter(ch -> ch == '.').count() == 3) {
-            return validateIPv4(queryIP);
-        } 
-        else if (queryIP.chars().filter(ch -> ch == ':').count() == 7) {
-            return validateIPv6(queryIP);
-        } 
-        else {
-            return "Neither";
+
+   public static boolean ipV6(String str){
+    int segmentLength=0;
+    for(int i=0;i<str.length();i++){
+        char cha=str.charAt(i);
+        if(cha==':'){
+            if(segmentLength==0) return false;
+            segmentLength=0;
+        }
+        else{
+            if(!Character.isDigit(cha) && (!(cha>='A' && cha<='F') && !((cha>='a' && cha<='f')))){
+                return false;
+            }
+            segmentLength++;
+            if(segmentLength>4) return false;
+        }
+
+    }
+    if(segmentLength==0) return false;
+    return true;
+   }
+  public static void main (String []args){
+    String str1="192.168.1.1";
+    String str2=":2001:0db8:85a3:0000:0000:8a2e:0370:7334";
+    int dotcount=0,coloncount=0;
+
+    for(char ch :str2.toCharArray()){
+        if(ch=='.'){
+            dotcount++;
+        }
+        if(ch==':'){
+            coloncount++;
         }
     }
-
-    private String validateIPv4(String ip) {
-
-        String[] parts = ip.split("\\.", -1);
-
-        for (String part : parts) {
-            if (part.length() == 0 || part.length() > 3){
-                 return "Neither";
-            }
-            if (part.charAt(0) == '0' && part.length() != 1){
-                return "Neither";
-            }
-            for (char ch : part.toCharArray()) {
-                if (!Character.isDigit(ch)) return "Neither";
-            }
-            if (Integer.parseInt(part) > 255){
-                return "Neither";
-            } 
+        if(dotcount==3 && ipV6(str1)){
+             System.out.println("Valid IPV4");
         }
-        return "IPv4";
-    }
-
-    private String validateIPv6(String ip) {
-        String[] parts = ip.split(":", -1);
-        String hex = "0123456789abcdefABCDEF";
-        
-        for (String part : parts) {
-            if (part.length() == 0 || part.length() > 4){
-                return "Neither";
-            };
-            for (char ch : part.toCharArray()) {
-                if (hex.indexOf(ch) == -1) return "Neither";
-            }
+        else if(coloncount==7 && ipV6(str2)){
+            System.out.println("Valid IPV6");
         }
-        return "IPv6";
-    }
+        else{
+             System.out.println("Invalid");
+        }
+  
+
+  }
 }
