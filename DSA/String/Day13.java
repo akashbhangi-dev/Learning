@@ -12,7 +12,7 @@ public class Day13 {
     public static void main(String[] args) {
         String str="abcd";
         String roStr="cdab";
-        boolean result=isRotated(str,roStr);
-        System.out.println("Str and roStr are rotated:"+result);
+        boolean isRotated=isRotated(str,roStr);
+        System.out.println("roStr is rotated version of str:"+isRotated); 
     }
 }
